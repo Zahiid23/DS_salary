@@ -7,6 +7,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 import pandas as pd
 
+
 def scrape_jobs(keyword):
     #Initializing the webdriver
     coptions = webdriver.ChromeOptions()
@@ -25,7 +26,7 @@ def scrape_jobs(keyword):
     # Initialize a list to store the job details
     job_data = []
 
-    while page_number < 30:
+    while page_number < 31:
         
         # Close the signup prompt if it appears
         try:
@@ -103,8 +104,9 @@ def scrape_jobs(keyword):
     driver.quit()
 
     # Convert the job data list into a DataFrame
-    df = pd.DataFrame(job_data)
+    return pd.DataFrame(job_data)
 
-    # Save the DataFrame to a CSV file
-    df.to_csv("job_details_scraped2.csv", index=False)
+df = scrape_jobs('software')
+
+df.to_csv("scraped_jobs.csv", index=False)
 
