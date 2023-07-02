@@ -18,8 +18,7 @@ def scrape_jobs(keyword):
     #Change the path to where chromedriver is in your home folder.
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options = coptions)
     driver.set_window_size(1120, 1000)
-
-    url = 'https://www.glassdoor.com/Job/united-arab-emirates-'+keyword+'-jobs-SRCH_IL.0,20_IN6_KO21,38.htm?context=Jobs&clickSource=searchBox'
+    url = 'https://www.glassdoor.com/Job/united-arab-emirates-'+keyword+'-jobs-SRCH_IL.0,20_IN6_KO21,30_IP5.htm?includeNoSalaryJobs=true&pgc=AB4ABIEAeAAAAAAAAAAAAAAAAgirEJUAsgEEARUsBg4LGAg%2B5Gb4gHhkg5WQPGJINZBvSqNzTSQMNoqysPQ4rwwFtNZSaQlSrSjqedrEXXPvgFWOdItxbBybdbCeQuiLwXPxgOTMF1%2BOhFBgrpQ0OqW%2B3T9gyn%2F9fZeIQMP8%2BQws%2FysLvGctmWI8NnB5p7XR%2BzFluMoj%2BAPAuh1mI8WWvpcCJ8weJlTgLkAD4MFu7RNpVIk%2FFd5qjCPNtaj%2BmOfKk748IYwuFdWI59IAAA%3D%3D'
     driver.get(url)
     page_number = 1
 
@@ -106,7 +105,7 @@ def scrape_jobs(keyword):
     # Convert the job data list into a DataFrame
     return pd.DataFrame(job_data)
 
-df = scrape_jobs('software')
+df = scrape_jobs('developer')
 
-df.to_csv("scraped_jobs.csv", index=False)
+df.to_csv("scraped_jobs2.csv", index=False)
 
